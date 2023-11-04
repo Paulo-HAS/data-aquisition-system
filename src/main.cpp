@@ -3,8 +3,28 @@
 #include <memory>
 #include <utility>
 #include <boost/asio.hpp>
+#include <string>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
+
 
 using boost::asio::ip::tcp;
+
+
+std::time_t string_to_time_t(const std::string& time_string) {
+    std::tm tm = {};
+    std::istringstream ss(time_string);
+    ss >> std::get_time(&tm, "%Y-%m-%dT%H:%M:%S");
+    return std::mktime(&tm);
+}
+
+std::string time_t_to_string(std::time_t time) {
+    std::tm* tm = std::localtime(&time);
+    std::ostringstream ss;
+    ss << std::put_time(tm, "%Y-%m-%dT%H:%M:%S");
+    return ss.str();
+}
 
 class session     //objeto de uma comunicação estabelecida
   : public std::enable_shared_from_this<session>  //permite uso de um ponteiro shared para si mesmo: shared_from_this()
