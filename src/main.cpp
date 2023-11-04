@@ -85,13 +85,13 @@ int main(int argc, char* argv[])
 {
   if (argc != 2)
   {
-    std::cerr << "Usage: chat_server <port>\n";
+    std::cerr << "Usage: chat_server <port>\n"; //erro caso não passe o servidor e a porta como parametro de execução
     return 1;
   }
 
   boost::asio::io_context io_context;   //funcionalidades de I/O assincronos
 
-  server s(io_context, std::atoi(argv[1]));
+  server s(io_context, std::atoi(argv[1]));   //Objeto do servidor
 
   io_context.run();
 
