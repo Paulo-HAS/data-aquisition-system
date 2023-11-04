@@ -98,14 +98,14 @@ private:
         });
   }
 
-  tcp::acceptor acceptor_;    //é algo como um semáforo de conexões
+  tcp::acceptor acceptor_;    //é algo como um semáforo de conexões, por ele serão configuradas as multiplas conexões
 };
 
 int main(int argc, char* argv[])
 {
   if (argc != 2)
   {
-    std::cerr << "Usage: chat_server <port>\n"; //erro caso não passe o servidor e a porta como parametro de execução
+    std::cerr << "Usage: chat_server <port>\n"; //erro caso não passe o servidor e a porta como parametro de execução  //Formato: "localhost:9000"
     return 1;
   }
 
